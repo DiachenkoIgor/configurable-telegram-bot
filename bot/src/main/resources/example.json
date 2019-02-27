@@ -1,0 +1,212 @@
+[
+  {
+    "id": "system.action.default",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Hello! Do you know Global Message Services company? Would you like to find out what message services we provide and who we are?",
+      "buttons": [
+        {
+          "nextActionId": "action.get_name",
+          "buttonText": "Yes"
+        },
+        {
+          "nextActionId": "actions.unfriendly",
+          "buttonText": "No, thank you"
+        },
+        {
+          "nextActionId": "actions.after_tell_me_more",
+          "buttonText": "Tell me more"
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.unfriendly",
+    "expectedIncomeType": "SUGGESTION",
+    "errorActionId": "actions.unfriendly",
+    "nextActionId": "system.action.default",
+    "outcomeMessage": {
+      "type": "text",
+      "text": "Thank you for your attention. See you! If you want to start conversation, please just write something."
+    },
+    "db_params": [
+      {
+        "paramValue": "STOP",
+        "table": "RCSUsers",
+        "idName": "number_id",
+        "idValue": "${userId}",
+        "field": "params.chat"
+      }
+    ]
+  },
+  {
+    "id": "action.get_name",
+    "expectedIncomeType": "SUGGESTION",
+    "nextActionId": "actions.main_menu_with_name",
+    "outcomeMessage": {
+      "type": "text",
+      "text": "Awesome! Please, write your name. We will be friends."
+    }
+  },
+  {
+    "id": "actions.main_menu_with_name",
+    "expectedIncomeType": "TEXT",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Well, nice to see you here, ${user_name}!Please, look at the topics bellow I have prepared to you.",
+      "buttons": [
+        {
+          "nextActionId": "actions.news_support",
+          "buttonText": "News"
+        },
+        {
+          "nextActionId": "actions.after_events",
+          "buttonText": "Events"
+        }
+      ]
+    },
+    "db_params": [
+      {
+        "paramValue": "${text}",
+        "table": "RCSUsers",
+        "idName": "number_id",
+        "idValue": "${userId}",
+        "field": "params.user_name"
+      }
+    ]
+  },
+  {
+    "id": "actions.main_menu_without_name",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Well, nice to see you here, <name>!Please, look at the topics bellow I have prepared to you.",
+      "buttons": [
+        {
+          "nextActionId": "actions.news_support",
+          "buttonText": "News"
+        },
+        {
+          "nextActionId": "actions.after_events",
+          "buttonText": "Events"
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.news_support",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Here you will be able to follow our news and interesting doings.",
+      "buttons": [
+        {
+          "nextActionId": "actions.after_menu",
+          "buttonText": "News",
+          "rcs_url_button": {
+            "url": "https://www.gms-worldwide.com/ru/news"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.after_menu_before_name",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Do you want to know us closer?",
+      "buttons": [
+        {
+          "nextActionId": "actions.unfriendly",
+          "buttonText": "Stop Chat."
+        },
+        {
+          "nextActionId": "system.action.default",
+          "buttonText": "Back to menu."
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.after_menu",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Do you want to know us closer?",
+      "buttons": [
+        {
+          "nextActionId": "actions.unfriendly",
+          "buttonText": "Stop Chat."
+        },
+        {
+          "nextActionId": "actions.main_menu_without_name",
+          "buttonText": "Back to menu."
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.after_events",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Here you could find our events where we will be grateful to see you!",
+      "buttons": [
+        {
+          "nextActionId": "actions.after_menu",
+          "buttonText": "Call us.",
+          "rcs_number_button": {
+            "number": "41415446200"
+          }
+        },
+        {
+          "nextActionId": "actions.after_menu",
+          "buttonText": "View events.",
+          "rcs_url_button": {
+            "url": "https://www.gms-worldwide.com/ru/events"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.after_view_events",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Choose please.",
+      "buttons": [
+        {
+          "nextActionId": "actions.unfriendly",
+          "buttonText": "Stop Chat."
+        },
+        {
+          "nextActionId": "actions.after_menu_before_name",
+          "buttonText": "Back to menu."
+        },
+        {
+          "nextActionId": "actions.after_events",
+          "buttonText": "Back button."
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.after_tell_me_more",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Choose please.",
+      "buttons": [
+        {
+          "nextActionId": "actions.after_menu_before_name",
+          "buttonText": "About us.",
+          "rcs_url_button": {
+            "url": "https://www.gms-worldwide.com"
+          }
+        }
+      ]
+    }
+  }
+]
