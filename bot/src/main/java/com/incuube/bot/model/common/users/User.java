@@ -19,7 +19,8 @@ import java.util.Map;
         use = JsonTypeInfo.Id.NAME,
         property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = RcsUser.class, name = "rcs_user")
+        @JsonSubTypes.Type(value = RcsUser.class, name = "rcs_user"),
+        @JsonSubTypes.Type(value = TelegramUser.class, name = "telegram_user")
 })
 @Data
 public abstract class User implements DbInstance {

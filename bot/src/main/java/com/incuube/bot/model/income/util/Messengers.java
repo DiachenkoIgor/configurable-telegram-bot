@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 
 @Getter
 public enum Messengers {
-    RCS("RCSUsers");
+    RCS("RCS_Users"),
+    TELEGRAM("Telegram_Users");
 
     private static Map<String, Messengers> types = Stream.of(values()).collect(Collectors.toMap(Enum::name, value -> value));
 

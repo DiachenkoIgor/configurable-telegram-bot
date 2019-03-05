@@ -2,6 +2,7 @@ package com.incuube.bot.database.common;
 
 import com.incuube.bot.model.common.util.DbInstance;
 import com.incuube.bot.model.exceptions.BotDabaseException;
+import com.incuube.bot.model.exceptions.DbParamNotFoundException;
 import com.incuube.bot.util.JsonConverter;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -57,7 +58,14 @@ public abstract class CommonMongoDbRepository {
 
             Document updateModelObjectForDB = dbInstance.getUpdateModelObjectForDB();
 
-            Document filter = new Document("_id", updateModelObjectForDB.remove("_id"));
+            Object id = updateModelObjectForDB.remove("_id");
+
+            if (!someCollection.find(new Document("_id", id)).iterator().hasNext()) {
+                throw new DbParamNotFoundException("Document wasn't found for update. Id - " + id);
+            }
+
+            Document filter = new Document("_id", id);
+
 
             someCollection.updateOne(
                     filter,

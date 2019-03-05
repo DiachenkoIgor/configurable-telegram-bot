@@ -1,28 +1,20 @@
 package com.incuube.bot.config;
 
-
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.incuube.bot.services.handlers.IncomeMessageHandler;
-import com.incuube.receiver.config.MessageConfig;
+
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import okhttp3.OkHttpClient;
-import org.bson.json.JsonWriterSettings;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.List;
 import java.util.concurrent.Executor;
 
-@Import(MessageConfig.class)
 @Configuration
 @EnableAsync
 public class AppConfig {
@@ -39,22 +31,6 @@ public class AppConfig {
     @Value("${bot.database.name}")
     private String databaseName;
 
-    @Bean
-    public DynamoDBMapper dynamoDBMapper(AmazonDynamoDB amazonDynamoDB) {
-        return new DynamoDBMapper(amazonDynamoDB);
-    }
-
-
-    @Bean
-    public DynamoDB dynamoDB(AmazonDynamoDB amazonDynamoDB) {
-        return new DynamoDB(amazonDynamoDB);
-    }
-
-
-    @Bean
-    public AmazonDynamoDB amazonDynamoDB() {
-        return AmazonDynamoDBClientBuilder.standard().build();
-    }
 
     @Bean
     public Executor messageReceiverTaskExecutor() {
@@ -83,7 +59,7 @@ public class AppConfig {
 
     @Bean
     public MongoClient mongoClient() {
-        return MongoClients.create("mongodb://127.0.0.1:27017");
+        return MongoClients.create("mongodb://heroku_12rr7r5h:ob4r8s328knsa17m7c6796vut6@ds261155.mlab.com:61155/heroku_12rr7r5h");
     }
 
     @Bean

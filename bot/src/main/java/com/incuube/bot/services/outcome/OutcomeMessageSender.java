@@ -1,6 +1,6 @@
 package com.incuube.bot.services.outcome;
 
-import com.incuube.bot.model.common.users.RcsUser;
+import com.incuube.bot.model.common.users.TelegramUser;
 import com.incuube.bot.model.common.users.User;
 import com.incuube.bot.model.exceptions.BotConfigException;
 import com.incuube.bot.model.outcome.OutcomeMessage;
@@ -10,8 +10,12 @@ import com.incuube.bot.util.JsonConverter;
 import com.incuube.bot.util.ParamsExtractor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,28 +24,36 @@ import java.util.regex.Pattern;
 @Log4j2
 public class OutcomeMessageSender {
 
-    private OutcomeRcsSender outcomeRcsSender;
+    private TelegramMessageSender telegramMessageSender;
+    @Value("${bot.telegram.serviceChat}")
+    private String serviceChatId;
+
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private final Pattern placeHolderPattern = Pattern.compile("\\$\\{(.+?)\\}");
 
     @Autowired
-    public OutcomeMessageSender(OutcomeRcsSender outcomeRcsSender) {
-        this.outcomeRcsSender = outcomeRcsSender;
+    public OutcomeMessageSender(TelegramMessageSender telegramMessageSender) {
+        this.telegramMessageSender = telegramMessageSender;
     }
 
     public String sendOutcomeMessage(OutcomeMessage outcomeMessage, User user) {
         switch (user.getMessenger()) {
-            case RCS:
-                RcsUser rcsUser = (RcsUser) user;
-                sendRcsOutcomeMessage(outcomeMessage, rcsUser);
-                return rcsUser.getNumber();
+            case TELEGRAM:
+                TelegramUser telegramUser = (TelegramUser) user;
+
+                sendTelegramOutcomeMessage(outcomeMessage, telegramUser);
+                return telegramUser.getId();
             default:
                 throw new BotConfigException("Unsupported Messenger! " + user.getMessenger());
         }
     }
 
-    private void sendRcsOutcomeMessage(OutcomeMessage outcomeMessage, RcsUser rcsUser) {
-        Optional<OutcomeMessage> message = prepareMessage(outcomeMessage, rcsUser);
+    private void sendTelegramOutcomeMessage(OutcomeMessage outcomeMessage, TelegramUser telegramUser) {
+        if (outcomeMessage.getParams().get("special_action") != null) {
+            sendSpecialAction(telegramUser);
+        }
+        Optional<OutcomeMessage> message = prepareMessage(outcomeMessage, telegramUser);
         if (!message.isPresent()) {
             throw new BotConfigException("Params not found!!");
         }
@@ -49,11 +61,37 @@ public class OutcomeMessageSender {
         outcomeMessage = message.get();
 
         if (outcomeMessage instanceof OutcomeTextMessage) {
-            outcomeRcsSender.sendOutcomeMessage((OutcomeTextMessage) outcomeMessage, rcsUser);
+            telegramMessageSender.sendOutcomeMessage((OutcomeTextMessage) outcomeMessage, telegramUser);
         }
         if (outcomeMessage instanceof OutcomeSuggestionMessage) {
-            outcomeRcsSender.sendOutcomeMessage((OutcomeSuggestionMessage) outcomeMessage, rcsUser);
+            telegramMessageSender.sendOutcomeMessage((OutcomeSuggestionMessage) outcomeMessage, telegramUser);
         }
+    }
+
+    private void sendSpecialAction(TelegramUser telegramUser) {
+        StringBuilder sb = new StringBuilder("Test Message:\n");
+        sb.append("User id (technical) - ").append(telegramUser.getId()).append("\n")
+                .append("User first name - ").append(telegramUser.getFirst_name()).append("\n");
+        if (telegramUser.getLast_name() != null) {
+            sb.append("User last name - ").append(telegramUser.getLast_name()).append("\n");
+        }
+        if (telegramUser.getUsername() != null) {
+            sb.append("Username - ").append(telegramUser.getUsername()).append("\n");
+        }
+
+        sb.append("Time -\"").append(telegramUser.getLastActionTime().format(formatter)).append("\n");
+        sb.append("Message -\"").append((String) telegramUser.getParams().get("connection")).append("\"");
+    
+        OutcomeTextMessage textMessage = new OutcomeTextMessage();
+        textMessage.setText(sb.toString());
+
+        Optional<OutcomeMessage> outcomeMessage = prepareMessage(textMessage, telegramUser);
+
+        if (!outcomeMessage.isPresent()) {
+            throw new BotConfigException("Params setting for special action is invalid!!");
+        }
+
+        telegramMessageSender.sendOutcomeMessage((OutcomeTextMessage) outcomeMessage.get(), serviceChatId);
     }
 
     private Optional<OutcomeMessage> prepareMessage(OutcomeMessage outcomeMessage, User user) {
