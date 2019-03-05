@@ -3,6 +3,7 @@ package com.incuube.bot.services.handlers;
 import com.incuube.bot.database.users.UserRepository;
 import com.incuube.bot.model.common.Action;
 import com.incuube.bot.model.common.users.RcsUser;
+import com.incuube.bot.model.common.users.TelegramUser;
 import com.incuube.bot.model.common.users.User;
 import com.incuube.bot.model.exceptions.BotDabaseException;
 import com.incuube.bot.model.income.IncomeMessage;
@@ -40,11 +41,8 @@ public class IncomeUserMessageHandler implements IncomeMessageHandler {
             if (!userFromDb.isPresent()) {
                 log.info("User is null for message - " + incomeMessage);
                 switch (incomeMessage.getMessenger()) {
-                    case RCS:
-                        RcsUser rcsUser = new RcsUser();
-                        rcsUser.setMessenger(Messengers.RCS);
-                        rcsUser.setNumber(incomeMessage.getUserId());
-                        user = rcsUser;
+                    case TELEGRAM:
+                        user = telegramUserPreparation(incomeMessage);
                         break;
                     default:
                         actionProcessorFacade.sendFatalError(incomeMessage.getUserId(), incomeMessage.getMessenger());
@@ -52,11 +50,51 @@ public class IncomeUserMessageHandler implements IncomeMessageHandler {
                 }
                 actionProcessorFacade.sendDefaultAction(user);
             } else {
+                if (incomeMessage.getMessenger() == Messengers.TELEGRAM) {
+                    checkTelegramUserForUpToDate((TelegramUser) userFromDb.get(), incomeMessage);
+                }
                 nextMessageHandler.handleMessage(incomeMessage, userFromDb.get(), next);
             }
         } catch (BotDabaseException bot) {
             actionProcessorFacade.sendFatalError(incomeMessage.getUserId(), incomeMessage.getMessenger());
         }
+    }
+
+    private void checkTelegramUserForUpToDate(TelegramUser telegramUser, IncomeMessage incomeMessage) {
+        boolean update = false;
+        if (incomeMessage.getParams().containsKey("first_name") && !incomeMessage.getParams().get("first_name").equals(telegramUser.getFirst_name())) {
+            telegramUser.setFirst_name((String) incomeMessage.getParams().get("first_name"));
+            update = true;
+        }
+        if (incomeMessage.getParams().containsKey("last_name") && !incomeMessage.getParams().get("last_name").equals(telegramUser.getLast_name())) {
+            telegramUser.setLast_name((String) incomeMessage.getParams().get("last_name"));
+            update = true;
+        }
+        if (incomeMessage.getParams().containsKey("username") && !incomeMessage.getParams().get("username").equals(telegramUser.getUsername())) {
+            telegramUser.setUsername((String) incomeMessage.getParams().get("username"));
+            update = true;
+        }
+
+        if (update) {
+            userRepository.updateUser(telegramUser);
+        }
+    }
+
+    private TelegramUser telegramUserPreparation(IncomeMessage incomeMessage) {
+        TelegramUser telegramUser = new TelegramUser();
+        telegramUser.setMessenger(Messengers.TELEGRAM);
+        telegramUser.setId(incomeMessage.getUserId());
+
+        if (incomeMessage.getParams().containsKey("first_name")) {
+            telegramUser.setFirst_name((String) incomeMessage.getParams().get("first_name"));
+        }
+        if (incomeMessage.getParams().containsKey("last_name")) {
+            telegramUser.setLast_name((String) incomeMessage.getParams().get("last_name"));
+        }
+        if (incomeMessage.getParams().containsKey("username")) {
+            telegramUser.setUsername((String) incomeMessage.getParams().get("username"));
+        }
+        return telegramUser;
     }
 
     @Override

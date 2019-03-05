@@ -3,9 +3,10 @@ package com.incuube.bot.database.users;
 import com.incuube.bot.database.common.CommonMongoDbRepository;
 import com.incuube.bot.database.util.MongoDbConverterSettings;
 import com.incuube.bot.model.common.users.RcsUser;
+import com.incuube.bot.model.common.users.TelegramUser;
 import com.incuube.bot.model.common.users.User;
 import com.incuube.bot.model.income.util.Messengers;
-import com.mongodb.client.MongoClient;
+
 import com.mongodb.client.MongoDatabase;
 import lombok.extern.log4j.Log4j2;
 import org.bson.json.JsonWriterSettings;
@@ -22,7 +23,7 @@ public class UserRepositoryMongoDb extends CommonMongoDbRepository implements Us
 
     private JsonWriterSettings jsonWriterSettings;
 
-    @Value("${bot.database.rcs_users.name}")
+    @Value("${bot.database.telegram_users.name}")
     private String rcsCollectionName;
 
     @Autowired
@@ -33,33 +34,33 @@ public class UserRepositoryMongoDb extends CommonMongoDbRepository implements Us
 
     @Override
     public Optional<User> getUserFromDb(String id, Messengers network) {
-        if (network == Messengers.RCS) {
-            return getRcsUserFromDb(id, this.rcsCollectionName);
+        if (network == Messengers.TELEGRAM) {
+            return getTelegramUserFromDb(id, this.rcsCollectionName);
         }
         return Optional.empty();
     }
 
-    private Optional<User> getRcsUserFromDb(String id, String collectionName) {
+    private Optional<User> getTelegramUserFromDb(String id, String collectionName) {
         Optional<User> result = super.getInstanceFromMongoDbById(collectionName, id, User.class, this.jsonWriterSettings);
-        log.info("Retrieved RCS user with id - " + id);
+        log.info("Retrieved Telegram user with id - " + id);
         return result;
     }
 
     @Override
     public void saveUserToDb(User user) {
-        if (user.getMessenger() == Messengers.RCS) {
-            RcsUser rcsUser = (RcsUser) user;
+        if (user.getMessenger() == Messengers.TELEGRAM) {
+            TelegramUser telegramUser = (TelegramUser) user;
             super.saveInstanceToMongoDb(this.rcsCollectionName, user);
-            log.info("Save new RCS user with id - " + rcsUser.getNumber());
+            log.info("Save new Telegram user with id - " + telegramUser.getId());
         }
     }
 
     @Override
     public void updateUser(User user) {
-        if (user.getMessenger() == Messengers.RCS) {
-            RcsUser rcsUser = (RcsUser) user;
+        if (user.getMessenger() == Messengers.TELEGRAM) {
+            TelegramUser telegramUser = (TelegramUser) user;
             super.updateInstanceInMongoDb(this.rcsCollectionName, user);
-            log.info("Update RCS user with id - " + rcsUser.getNumber());
+            log.info("Update Telegram user with id - " + telegramUser.getId());
         }
     }
 
