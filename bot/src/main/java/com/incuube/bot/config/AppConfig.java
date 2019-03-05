@@ -7,7 +7,11 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.incuube.bot.services.handlers.IncomeMessageHandler;
 import com.incuube.receiver.config.MessageConfig;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
 import okhttp3.OkHttpClient;
+import org.bson.json.JsonWriterSettings;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +35,9 @@ public class AppConfig {
 
     @Value("${bot.async.queueCapacity}")
     private int queueCapacity;
+
+    @Value("${bot.database.name}")
+    private String databaseName;
 
     @Bean
     public DynamoDBMapper dynamoDBMapper(AmazonDynamoDB amazonDynamoDB) {
@@ -73,5 +80,16 @@ public class AppConfig {
     public OkHttpClient okHttpClient() {
         return new OkHttpClient.Builder().retryOnConnectionFailure(true).build();
     }
+
+    @Bean
+    public MongoClient mongoClient() {
+        return MongoClients.create("mongodb://127.0.0.1:27017");
+    }
+
+    @Bean
+    public MongoDatabase sheraMongoDatabase(MongoClient mongoClient) {
+        return mongoClient.getDatabase(databaseName);
+    }
+
 
 }

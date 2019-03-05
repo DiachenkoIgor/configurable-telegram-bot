@@ -36,18 +36,18 @@ public class RcsIncomeMessageServiceBotLogic implements MessageHandler {
     @Async("messageReceiverTaskExecutor")
     public void handleMessage(UserMessage userMessage) {
         try {
-            if (messageRepository.checkIfExistsMessage(userMessage.getMessageId())) {
+            /*if (messageRepository.checkIfExistsMessage(userMessage.getMessageId())) {
                 messageRepository.incomeMessageUpdate(userMessage);
             } else {
                 messageRepository.incomeMessageSave(userMessage);
-            }
+            }*/
             incomeMessageProcessor.processMessage(
                     incomeMessageConverter.convertToCommonModel(userMessage)
             );
 
-        } catch (RbmDatabaseException ex) {
+        } /*catch (RbmDatabaseException ex) {
             log.error("Income message saving exception.", ex);
-        } catch (BotIncomeMessageNotSupportedException ex) {
+        }*/ catch (BotIncomeMessageNotSupportedException ex) {
             log.error("Received unsupported message type. {}", userMessage);
             actionProcessorFacade.unknownMessageHandler(userMessage.getNumber().substring(1), Messengers.RCS);
         } catch (EventsNotSupportedException ex) {

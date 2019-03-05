@@ -1,10 +1,11 @@
 package com.incuube.bot.model.common.util;
 
-import com.amazonaws.services.dynamodbv2.document.Item;
-import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
+
+import org.bson.Document;
 
 public interface DbInstance {
-    Item getCreateModelObjectForDB();
+    Document getCreateModelObjectForDB();
 
-    UpdateItemSpec getUpdateModelObjectForDB();
+    Document getUpdateModelObjectForDB();
+
 }

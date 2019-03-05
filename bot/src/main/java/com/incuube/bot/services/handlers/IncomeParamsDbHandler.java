@@ -80,7 +80,9 @@ public class IncomeParamsDbHandler implements IncomeMessageHandler {
         Map<String, Object> mapForSetting = user.getParams();
         for (int i = 0; i < path.length; i++) {
             if (i != path.length - 1) {
-                mapForSetting.put(path[i], new HashMap<>());
+                Map<String, Object> newMap = new HashMap<>();
+                mapForSetting.put(path[i], newMap);
+                mapForSetting = newMap;
             } else {
                 mapForSetting.put(path[i], dbSaverEntity.getParamValue());
             }
@@ -139,7 +141,7 @@ public class IncomeParamsDbHandler implements IncomeMessageHandler {
     }
 
     private DbParamNotFoundException dbParamNotFoundException(String logMessage, String userMessage) {
-        DbParamNotFoundException dbParamNotFoundException = new DbParamNotFoundException();
+        DbParamNotFoundException dbParamNotFoundException = new DbParamNotFoundException(logMessage);
         dbParamNotFoundException.setLogMessage(logMessage);
         if (userMessage != null) {
             dbParamNotFoundException.setUserMessage(userMessage);
