@@ -32,7 +32,7 @@
     "db_params": [
       {
         "paramValue": "STOP",
-        "table": "RCSUsers",
+        "table": "TELEGRAM_USERS",
         "idName": "number_id",
         "idValue": "${userId}",
         "field": "params.chat"
@@ -68,7 +68,7 @@
     "db_params": [
       {
         "paramValue": "${text}",
-        "table": "RCSUsers",
+        "table": "TELEGRAM_USERS",
         "idName": "number_id",
         "idValue": "${userId}",
         "field": "params.user_name"
@@ -102,10 +102,7 @@
       "buttons": [
         {
           "nextActionId": "actions.after_menu",
-          "buttonText": "News",
-          "rcs_url_button": {
-            "url": "https://www.gms-worldwide.com/ru/news"
-          }
+          "buttonText": "News"
         }
       ]
     }
@@ -155,17 +152,11 @@
       "buttons": [
         {
           "nextActionId": "actions.after_menu",
-          "buttonText": "Call us.",
-          "rcs_number_button": {
-            "number": "41415446200"
-          }
+          "buttonText": "Call us."
         },
         {
           "nextActionId": "actions.after_menu",
-          "buttonText": "View events.",
-          "rcs_url_button": {
-            "url": "https://www.gms-worldwide.com/ru/events"
-          }
+          "buttonText": "View events."
         }
       ]
     }
@@ -201,10 +192,7 @@
       "buttons": [
         {
           "nextActionId": "actions.after_menu_before_name",
-          "buttonText": "About us.",
-          "rcs_url_button": {
-            "url": "https://www.gms-worldwide.com"
-          }
+          "buttonText": "About us."
         }
       ]
     }

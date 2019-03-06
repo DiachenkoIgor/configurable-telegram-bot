@@ -59,7 +59,7 @@ public class AppConfig {
 
     @Bean
     public MongoClient mongoClient() {
-        return MongoClients.create("mongodb://heroku_12rr7r5h:ob4r8s328knsa17m7c6796vut6@ds261155.mlab.com:61155/heroku_12rr7r5h");
+        return MongoClients.create("mongodb://normal:ob4r8s328knsa17m7c6796vut6@ds261155.mlab.com:61155/heroku_12rr7r5h");
     }
 
     @Bean
