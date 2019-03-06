@@ -42,7 +42,7 @@ public class ActionProcessorFacade {
             if (actionById.isPresent()) {
                 Action defaultAction = actionById.get();
                 String userId = outcomeMessageSender.sendOutcomeMessage(defaultAction.getOutcomeMessage(), user);
-                log.info("Successful sending default message to user - {}", userId);
+             //   log.info("Successful sending default message to user - {}", userId);
                 user.setCurrentAction(defaultAction.getId());
                 user.setLastActionTime(LocalDateTime.now());
                 userRepository.saveUserToDb(user);
@@ -60,7 +60,7 @@ public class ActionProcessorFacade {
     public void sendAction(Action action, User user) {
         try {
             String userId = outcomeMessageSender.sendOutcomeMessage(action.getOutcomeMessage(), user);
-            log.info("Successful sending next message to user - {}", userId);
+           // log.info("Successful sending next message to user - {}", userId);
             user.setCurrentAction(action.getId());
             user.setLastActionTime(LocalDateTime.now());
             userRepository.updateUser(user);
@@ -98,7 +98,7 @@ public class ActionProcessorFacade {
             outcomeTextMessage.setText(message);
 
             String userId = outcomeMessageSender.sendOutcomeMessage(outcomeTextMessage, user);
-            log.info("Was send error message to user - {}", userId);
+        //    log.info("Was send error message to user - {}", userId);
 
             Optional<Action> actionById = actionRepository.getActionById(user.getCurrentAction());
             if (actionById.isPresent()) {

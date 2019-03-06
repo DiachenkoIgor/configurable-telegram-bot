@@ -32,7 +32,7 @@ public class IncomeActionMessageHandler implements IncomeMessageHandler {
 
     @Override
     public void handleMessage(IncomeMessage incomeMessage, User user, Action next) {
-        log.info("Action Handler for message - {}.", incomeMessage);
+      //  log.info("Action Handler for message - {}.", incomeMessage);
         try {
             Optional<Action> action;
             switch (incomeMessage.getIncomeType()) {

@@ -95,7 +95,7 @@ public class OutcomeMessageSender {
     }
 
     private Optional<OutcomeMessage> prepareMessage(OutcomeMessage outcomeMessage, User user) {
-        log.info("Params sender for message - {}", outcomeMessage);
+  //      log.info("Params sender for message - {}", outcomeMessage);
         Optional<String> jsonRepresentation = JsonConverter.convertObject(outcomeMessage);
         if (jsonRepresentation.isPresent()) {
             String json = jsonRepresentation.get();

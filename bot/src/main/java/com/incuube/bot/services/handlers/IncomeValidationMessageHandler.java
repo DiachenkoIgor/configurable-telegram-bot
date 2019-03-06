@@ -34,7 +34,7 @@ public class IncomeValidationMessageHandler implements IncomeMessageHandler {
     public void handleMessage(IncomeMessage incomeMessage, User user, Action next) {
         try {
             if (next.getExpectedIncomeType() != null && incomeMessage.getIncomeType() != next.getExpectedIncomeType()) {
-                log.error("Wrong type of message for - " + incomeMessage);
+
                 actionProcessorFacade.sendRepeatErrorAction(
                         String.format("I expected %s message. Try again", incomeMessage.getIncomeType().toValue()), user);
             }

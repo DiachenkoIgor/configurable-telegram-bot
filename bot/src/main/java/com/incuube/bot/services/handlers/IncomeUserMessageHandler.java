@@ -35,11 +35,11 @@ public class IncomeUserMessageHandler implements IncomeMessageHandler {
 
     @Override
     public void handleMessage(IncomeMessage incomeMessage, User user, Action next) {
-        log.info("User Handler for message - {}.", incomeMessage);
+      //  log.info("User Handler for message - {}.", incomeMessage);
         try {
             Optional<User> userFromDb = userRepository.getUserFromDb(incomeMessage.getUserId(), incomeMessage.getMessenger());
             if (!userFromDb.isPresent()) {
-                log.info("User is null for message - " + incomeMessage);
+           //     log.info("User is null for message - " + incomeMessage);
                 switch (incomeMessage.getMessenger()) {
                     case TELEGRAM:
                         user = telegramUserPreparation(incomeMessage);

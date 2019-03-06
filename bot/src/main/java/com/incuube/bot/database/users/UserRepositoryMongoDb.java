@@ -42,7 +42,7 @@ public class UserRepositoryMongoDb extends CommonMongoDbRepository implements Us
 
     private Optional<User> getTelegramUserFromDb(String id, String collectionName) {
         Optional<User> result = super.getInstanceFromMongoDbById(collectionName, id, User.class, this.jsonWriterSettings);
-        log.info("Retrieved Telegram user with id - " + id);
+      //  log.info("Retrieved Telegram user with id - " + id);
         return result;
     }
 
@@ -51,7 +51,7 @@ public class UserRepositoryMongoDb extends CommonMongoDbRepository implements Us
         if (user.getMessenger() == Messengers.TELEGRAM) {
             TelegramUser telegramUser = (TelegramUser) user;
             super.saveInstanceToMongoDb(this.rcsCollectionName, user);
-            log.info("Save new Telegram user with id - " + telegramUser.getId());
+      //      log.info("Save new Telegram user with id - " + telegramUser.getId());
         }
     }
 
@@ -60,7 +60,7 @@ public class UserRepositoryMongoDb extends CommonMongoDbRepository implements Us
         if (user.getMessenger() == Messengers.TELEGRAM) {
             TelegramUser telegramUser = (TelegramUser) user;
             super.updateInstanceInMongoDb(this.rcsCollectionName, user);
-            log.info("Update Telegram user with id - " + telegramUser.getId());
+      //      log.info("Update Telegram user with id - " + telegramUser.getId());
         }
     }
 
