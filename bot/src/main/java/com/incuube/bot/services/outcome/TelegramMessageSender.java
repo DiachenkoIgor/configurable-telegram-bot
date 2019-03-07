@@ -65,7 +65,7 @@ public class TelegramMessageSender {
 
         buttons.forEach(button -> {
             ArrayList<InlineKeyboardButton> list = new ArrayList<>();
-            list.add(new InlineKeyboardButton().setText(button.getButtonText()).setCallbackData(button.getNextActionId()));
+            list.add(new InlineKeyboardButton().setText(button.getButtonText()).setCallbackData(button.getNextActionId() + "@" + button.getButtonText()));
             rowsInline.add(list);
         });
 

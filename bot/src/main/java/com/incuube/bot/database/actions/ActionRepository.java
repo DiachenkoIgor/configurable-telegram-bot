@@ -1,6 +1,7 @@
 package com.incuube.bot.database.actions;
 
 import com.incuube.bot.model.common.Action;
+import com.incuube.bot.model.common.Button;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -13,4 +14,5 @@ public interface ActionRepository {
     Optional<Action> getActionById(String id);
 
     void saveAction(Action action);
+
 }

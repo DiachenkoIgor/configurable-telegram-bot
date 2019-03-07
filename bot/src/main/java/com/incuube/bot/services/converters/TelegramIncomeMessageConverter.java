@@ -1,11 +1,14 @@
 package com.incuube.bot.services.converters;
 
+import com.incuube.bot.database.actions.ActionRepository;
+import com.incuube.bot.database.users.UserRepository;
 import com.incuube.bot.model.common.IncomeType;
 import com.incuube.bot.model.exceptions.BotIncomeMessageNotSupportedException;
 import com.incuube.bot.model.income.IncomeMessage;
 import com.incuube.bot.model.income.IncomeSuggestionMessage;
 import com.incuube.bot.model.income.IncomeTextMessage;
 import com.incuube.bot.model.income.util.Messengers;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -51,14 +54,24 @@ public class TelegramIncomeMessageConverter {
 
     private IncomeMessage suggestionMessage(Update update) {
         IncomeSuggestionMessage incomeSuggestionMessage = new IncomeSuggestionMessage();
-        incomeSuggestionMessage.setPostbackData(update.getCallbackQuery().getData());
+
         incomeSuggestionMessage.setMessenger(Messengers.TELEGRAM);
         incomeSuggestionMessage.setUserId(String.valueOf(update.getCallbackQuery().getFrom().getId()));
         incomeSuggestionMessage.setIncomeType(IncomeType.SUGGESTION);
+        if(update.getCallbackQuery().getData().contains("@")) {
+            String[] values = update.getCallbackQuery().getData().split("@");
+            incomeSuggestionMessage.setPostbackData(values[0]);
+            incomeSuggestionMessage.setButtonText(values[1]);
+            incomeSuggestionMessage.getParams().put("buttonText", incomeSuggestionMessage.getButtonText());
+        }else {
+            incomeSuggestionMessage.setPostbackData(update.getCallbackQuery().getData());
+        }
+
 
         incomeSuggestionMessage.getParams().put("messageId", update.getCallbackQuery().getId());
         incomeSuggestionMessage.getParams().put("postbackData", update.getCallbackQuery().getData());
         incomeSuggestionMessage.getParams().put("userId", String.valueOf(update.getCallbackQuery().getFrom().getId()));
+
 
         if (update.getCallbackQuery().getFrom().getFirstName() != null) {
             incomeSuggestionMessage.getParams().put("first_name", update.getCallbackQuery().getFrom().getFirstName());
@@ -72,4 +85,6 @@ public class TelegramIncomeMessageConverter {
 
         return incomeSuggestionMessage;
     }
+
+
 }

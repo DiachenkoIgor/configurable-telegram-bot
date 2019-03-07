@@ -28,7 +28,7 @@ public class OutcomeMessageSender {
     @Value("${bot.telegram.serviceChat}")
     private String serviceChatId;
 
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     private final Pattern placeHolderPattern = Pattern.compile("\\$\\{(.+?)\\}");
 
@@ -69,7 +69,7 @@ public class OutcomeMessageSender {
     }
 
     private void sendSpecialAction(TelegramUser telegramUser) {
-        StringBuilder sb = new StringBuilder("Test Message:\n");
+        StringBuilder sb = new StringBuilder("Request:\n");
         sb.append("User id (technical) - ").append(telegramUser.getId()).append("\n")
                 .append("User first name - ").append(telegramUser.getFirst_name()).append("\n");
         if (telegramUser.getLast_name() != null) {
@@ -78,9 +78,12 @@ public class OutcomeMessageSender {
         if (telegramUser.getUsername() != null) {
             sb.append("Username - ").append(telegramUser.getUsername()).append("\n");
         }
+        sb.append("City - \"").append(telegramUser.getParams().get("city")).append("\"\n");
+        sb.append("Days - \"").append(telegramUser.getParams().get("days")).append("\"\n");
+        sb.append("Month - \"").append(telegramUser.getParams().get("month")).append("\"\n");
+        sb.append("Time -\"").append(telegramUser.getLastActionTime().plusHours(2).format(formatter)).append("\"\n");
+        sb.append("Connection message -\"").append((String) telegramUser.getParams().get("contact_info")).append("\"");
 
-        sb.append("Time -\"").append(telegramUser.getLastActionTime().format(formatter)).append("\n");
-        sb.append("Message -\"").append((String) telegramUser.getParams().get("connection")).append("\"");
     
         OutcomeTextMessage textMessage = new OutcomeTextMessage();
         textMessage.setText(sb.toString());

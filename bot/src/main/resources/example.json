@@ -3,198 +3,542 @@
     "id": "system.action.default",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Hello! Do you know Global Message Services company? Would you like to find out what message services we provide and who we are?",
+      "text": "Доброго дня!",
       "buttons": [
         {
-          "nextActionId": "action.get_name",
-          "buttonText": "Yes"
+          "nextActionId": "actions.before_hundred_euros",
+          "buttonText": "до 100 €"
         },
         {
-          "nextActionId": "actions.unfriendly",
-          "buttonText": "No, thank you"
+          "nextActionId": "actions.before_hundred_fifty_euros",
+          "buttonText": "до 150 €"
         },
         {
-          "nextActionId": "actions.after_tell_me_more",
-          "buttonText": "Tell me more"
+          "nextActionId": "actions.before_two_hundred",
+          "buttonText": "до 200 €"
         }
       ]
     }
   },
   {
-    "id": "actions.unfriendly",
+    "id": "actions.before_two_hundred",
     "expectedIncomeType": "SUGGESTION",
-    "errorActionId": "actions.unfriendly",
-    "nextActionId": "system.action.default",
     "outcomeMessage": {
-      "type": "text",
-      "text": "Thank you for your attention. See you! If you want to start conversation, please just write something."
+      "type": "suggestion",
+      "text": "Виберіть місто",
+      "buttons": [
+        {
+          "nextActionId": "action.expensive_greece",
+          "buttonText": "Греція"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.expensive_greece",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Греція!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Салоніка",
+          "buttonText": "Салоніка"
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.before_hundred_fifty_euros",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Виберіть місто",
+      "buttons": [
+        {
+          "nextActionId": "action.greece",
+          "buttonText": "Греція(З червня)"
+        },
+        {
+          "nextActionId": "action.denmark",
+          "buttonText": "Данія"
+        },
+        {
+          "nextActionId": "action.kipr",
+          "buttonText": "Кіпр"
+        },
+        {
+          "nextActionId": "action.expensive_germany",
+          "buttonText": "Німеччина"
+        },
+        {
+          "nextActionId": "action.sweden",
+          "buttonText": "Швеція"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.greece",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Греція!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Афіни",
+          "buttonText": "Афіни"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.denmark",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Данія!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Копенгаген",
+          "buttonText": "Копенгаген"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.sweden",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Швеція!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Стокгольм",
+          "buttonText": "Стокгольм"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.kipr",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Кіпр!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Ларнака",
+          "buttonText": "Ларнака"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.expensive_germany",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Німеччина!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Бремен",
+          "buttonText": "Бремен"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Гамбург",
+          "buttonText": "Гамбург"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Ганновер",
+          "buttonText": "Ганновер"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Дортмунд",
+          "buttonText": "Дортмунд"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Кельн",
+          "buttonText": "Кельн"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Кельн",
+          "buttonText": "Кельн"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Нюрнберг",
+          "buttonText": "Нюрнберг"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Мюнхен",
+          "buttonText": "Мюнхен"
+        }
+      ]
+    }
+  },
+  {
+    "id": "actions.before_hundred_euros",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Виберіть місто",
+      "buttons": [
+        {
+          "nextActionId": "action.bolgaria@Болгария",
+          "buttonText": "Болгарія"
+        },
+        {
+          "nextActionId": "action.austria@Австрія",
+          "buttonText": "Австрія"
+        },
+        {
+          "nextActionId": "action.polscha",
+          "buttonText": "Польща"
+        },
+        {
+          "nextActionId": "action.germany@Німеччина",
+          "buttonText": "Німеччина"
+        },
+        {
+          "nextActionId": "action.estonia@Естонія",
+          "buttonText": "Естонія"
+        },
+        {
+          "nextActionId": "action.latvia@Латвія",
+          "buttonText": "Латвія"
+        },
+        {
+          "nextActionId": "action.litva@Літва",
+          "buttonText": "Літва"
+        },
+        {
+          "nextActionId": "action.england@Англія",
+          "buttonText": "Англія"
+        },
+        {
+          "nextActionId": "action.vengria@Венгрія",
+          "buttonText": "Венгрія"
+        },
+        {
+          "nextActionId": "action.slovakia@Словакія",
+          "buttonText": "Словения"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.austria",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Австрія!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Вена",
+          "buttonText": "Вена"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.bolgaria",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Болгарія!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Софія",
+          "buttonText": "Софія"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.polscha",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Польща!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Краков",
+          "buttonText": "Краков"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Варшава",
+          "buttonText": "Варшава"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Вроцлав",
+          "buttonText": "Вроцлав"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Гданск",
+          "buttonText": "Гданск"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Катовице",
+          "buttonText": "Катовице"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Познань",
+          "buttonText": "Познань"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.estonia",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Естонія!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Талін",
+          "buttonText": "Талін"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.litva",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Литва!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Вільнюс",
+          "buttonText": "Вільнюс"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.germany",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Німеччина!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Берлін",
+          "buttonText": "Берлін"
+        },
+        {
+          "nextActionId": "action.choose_days_quantity@Франкфурт",
+          "buttonText": "Франкфурт"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.england",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Англія!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Лондон",
+          "buttonText": "Лондон"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.vengria",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Венгрія!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Венгрія",
+          "buttonText": "Венгрія"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.latvia",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Латвія!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Ріга",
+          "buttonText": "Ріга"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.slovakia",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Словакія!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_days_quantity@Братислава",
+          "buttonText": "Братислава"
+        }
+      ]
+    }
+  },
+  {
+    "id": "action.choose_days_quantity",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Дні!",
+      "buttons": [
+        {
+          "nextActionId": "action.choose_month@1-2",
+          "buttonText": "1-2"
+        },
+        {
+          "nextActionId": "action.choose_month@2-3",
+          "buttonText": "2-3"
+        },
+        {
+          "nextActionId": "action.choose_month@4",
+          "buttonText": ">4"
+        }
+      ]
     },
     "db_params": [
       {
-        "paramValue": "STOP",
+        "paramValue": "${buttonText}",
         "table": "TELEGRAM_USERS",
-        "idName": "number_id",
+        "idName": "_id",
         "idValue": "${userId}",
-        "field": "params.chat"
+        "field": "params.city"
       }
     ]
   },
   {
-    "id": "action.get_name",
-    "expectedIncomeType": "SUGGESTION",
-    "nextActionId": "actions.main_menu_with_name",
-    "outcomeMessage": {
-      "type": "text",
-      "text": "Awesome! Please, write your name. We will be friends."
-    }
-  },
-  {
-    "id": "actions.main_menu_with_name",
-    "expectedIncomeType": "TEXT",
+    "_id": "action.choose_month",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Well, nice to see you here, ${user_name}!Please, look at the topics bellow I have prepared to you.",
       "buttons": [
         {
-          "nextActionId": "actions.news_support",
-          "buttonText": "News"
+          "nextActionId": "action.people_quantity@this",
+          "buttonText": "Цей місяць",
+          "params": {}
         },
         {
-          "nextActionId": "actions.after_events",
-          "buttonText": "Events"
+          "nextActionId": "action.people_quantity@next",
+          "buttonText": "Наступний місяць",
+          "params": {}
+        },
+        {
+          "nextActionId": "action.people_quantity@unknown",
+          "buttonText": "Не знаю",
+          "params": {}
+        }
+      ],
+      "text": "Місяці!"
+    },
+    "params": {
+      "db_params": [
+        {
+          "paramValue": "${buttonText}",
+          "table": "TELEGRAM_USERS",
+          "idName": "_id",
+          "idValue": "${userId}",
+          "field": "params.days"
+        }
+      ]
+    },
+    "expectedIncomeType": "SUGGESTION"
+  },
+  {
+    "id": "action.people_quantity",
+    "expectedIncomeType": "SUGGESTION",
+    "outcomeMessage": {
+      "type": "suggestion",
+      "text": "Місяці!",
+      "buttons": [
+        {
+          "nextActionId": "actions.personal_info@Сам",
+          "buttonText": "Сам"
+        },
+        {
+          "nextActionId": "actions.personal_info@В двох",
+          "buttonText": "В двох"
+        },
+        {
+          "nextActionId": "actions.personal_info@Компанія",
+          "buttonText": "Компанія"
         }
       ]
     },
     "db_params": [
       {
-        "paramValue": "${text}",
+        "paramValue": "${buttonText}",
         "table": "TELEGRAM_USERS",
-        "idName": "number_id",
+        "idName": "_id",
         "idValue": "${userId}",
-        "field": "params.user_name"
+        "field": "params.month"
       }
     ]
   },
   {
-    "id": "actions.main_menu_without_name",
+    "id": "actions.personal_info",
     "expectedIncomeType": "SUGGESTION",
+    "nextActionId": "actions.last",
     "outcomeMessage": {
-      "type": "suggestion",
-      "text": "Well, nice to see you here, <name>!Please, look at the topics bellow I have prepared to you.",
-      "buttons": [
-        {
-          "nextActionId": "actions.news_support",
-          "buttonText": "News"
-        },
-        {
-          "nextActionId": "actions.after_events",
-          "buttonText": "Events"
-        }
-      ]
-    }
+      "type": "text",
+      "text": "Ввведіть інформація як з вами зв'язатися!"
+    },
+    "db_params": [
+      {
+        "paramValue": "${buttonText}",
+        "table": "TELEGRAM_USERS",
+        "idName": "_id",
+        "idValue": "${userId}",
+        "field": "params.days"
+      }
+    ]
   },
   {
-    "id": "actions.news_support",
-    "expectedIncomeType": "SUGGESTION",
+    "_id": "actions.last",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Here you will be able to follow our news and interesting doings.",
       "buttons": [
-        {
-          "nextActionId": "actions.after_menu",
-          "buttonText": "News"
-        }
-      ]
-    }
-  },
-  {
-    "id": "actions.after_menu_before_name",
-    "expectedIncomeType": "SUGGESTION",
-    "outcomeMessage": {
-      "type": "suggestion",
-      "text": "Do you want to know us closer?",
-      "buttons": [
-        {
-          "nextActionId": "actions.unfriendly",
-          "buttonText": "Stop Chat."
-        },
         {
           "nextActionId": "system.action.default",
-          "buttonText": "Back to menu."
+          "buttonText": "Пройти знову?",
+          "params": {}
         }
-      ]
-    }
-  },
-  {
-    "id": "actions.after_menu",
-    "expectedIncomeType": "SUGGESTION",
-    "outcomeMessage": {
-      "type": "suggestion",
-      "text": "Do you want to know us closer?",
-      "buttons": [
+      ],
+      "text": "Дякую за увагу.",
+      "special_action": true
+    },
+    "params": {
+      "db_params": [
         {
-          "nextActionId": "actions.unfriendly",
-          "buttonText": "Stop Chat."
+          "paramValue": "FINISHED",
+          "table": "TELEGRAM_USERS",
+          "idName": "_id",
+          "idValue": "${userId}",
+          "field": "params.chat"
         },
         {
-          "nextActionId": "actions.main_menu_without_name",
-          "buttonText": "Back to menu."
+          "paramValue": "${text}",
+          "table": "TELEGRAM_USERS",
+          "idName": "_id",
+          "idValue": "${userId}",
+          "field": "params.contact_info"
         }
       ]
-    }
-  },
-  {
-    "id": "actions.after_events",
-    "expectedIncomeType": "SUGGESTION",
-    "outcomeMessage": {
-      "type": "suggestion",
-      "text": "Here you could find our events where we will be grateful to see you!",
-      "buttons": [
-        {
-          "nextActionId": "actions.after_menu",
-          "buttonText": "Call us."
-        },
-        {
-          "nextActionId": "actions.after_menu",
-          "buttonText": "View events."
-        }
-      ]
-    }
-  },
-  {
-    "id": "actions.after_view_events",
-    "expectedIncomeType": "SUGGESTION",
-    "outcomeMessage": {
-      "type": "suggestion",
-      "text": "Choose please.",
-      "buttons": [
-        {
-          "nextActionId": "actions.unfriendly",
-          "buttonText": "Stop Chat."
-        },
-        {
-          "nextActionId": "actions.after_menu_before_name",
-          "buttonText": "Back to menu."
-        },
-        {
-          "nextActionId": "actions.after_events",
-          "buttonText": "Back button."
-        }
-      ]
-    }
-  },
-  {
-    "id": "actions.after_tell_me_more",
-    "expectedIncomeType": "SUGGESTION",
-    "outcomeMessage": {
-      "type": "suggestion",
-      "text": "Choose please.",
-      "buttons": [
-        {
-          "nextActionId": "actions.after_menu_before_name",
-          "buttonText": "About us."
-        }
-      ]
-    }
+    },
+    "expectedIncomeType": "TEXT"
   }
 ]
+
