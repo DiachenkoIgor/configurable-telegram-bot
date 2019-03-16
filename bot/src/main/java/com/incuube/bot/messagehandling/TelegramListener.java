@@ -31,13 +31,13 @@ public class TelegramListener extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "SheraTest_bot";
+        return "ShermansTripBot";
     }
 
 
     @Override
     public String getBotToken() {
-        return "687443504:AAEbxCbT4j9rAssDLdC7CWi28gGpHugbSpI";
+        return "630159811:AAFPkekTa5glCS5YBtNsf29JX8SeJia77xc";
     }
 
 

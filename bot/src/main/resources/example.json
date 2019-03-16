@@ -3,7 +3,7 @@
     "id": "system.action.default",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Доброго дня!",
+      "text": "Привет, я Telegram Bot от компании ShermanTravel) Я помогаю людям определиться с поездкой. Следуйте инструкции)\\n Выберите суму.",
       "buttons": [
         {
           "nextActionId": "actions.before_hundred_euros",
@@ -25,11 +25,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Виберіть місто",
+      "text": "Виберите страну.",
       "buttons": [
         {
           "nextActionId": "action.expensive_greece",
-          "buttonText": "Греція"
+          "buttonText": "Греция"
         }
       ]
     }
@@ -39,11 +39,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Греція!",
+      "text": "Города в Греции!",
       "buttons": [
         {
-          "nextActionId": "action.choose_days_quantity@Салоніка",
-          "buttonText": "Салоніка"
+          "nextActionId": "action.choose_days_quantity@Салоника",
+          "buttonText": "Салоника"
         }
       ]
     }
@@ -53,27 +53,27 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Виберіть місто",
+      "text": "Виберите страну.",
       "buttons": [
         {
           "nextActionId": "action.greece",
-          "buttonText": "Греція(З червня)"
+          "buttonText": "Греция (С июля)"
         },
         {
           "nextActionId": "action.denmark",
-          "buttonText": "Данія"
+          "buttonText": "Дания"
         },
         {
           "nextActionId": "action.kipr",
-          "buttonText": "Кіпр"
+          "buttonText": "Кипр"
         },
         {
           "nextActionId": "action.expensive_germany",
-          "buttonText": "Німеччина"
+          "buttonText": "Германия"
         },
         {
           "nextActionId": "action.sweden",
-          "buttonText": "Швеція"
+          "buttonText": "Швеция"
         }
       ]
     }
@@ -83,11 +83,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Греція!",
+      "text": "Города в Греции!",
       "buttons": [
         {
-          "nextActionId": "action.choose_days_quantity@Афіни",
-          "buttonText": "Афіни"
+          "nextActionId": "action.choose_days_quantity@Афины",
+          "buttonText": "Афины"
         }
       ]
     }
@@ -97,7 +97,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Данія!",
+      "text": "Города в Дании!",
       "buttons": [
         {
           "nextActionId": "action.choose_days_quantity@Копенгаген",
@@ -111,7 +111,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Швеція!",
+      "text": "Города в Швеции!",
       "buttons": [
         {
           "nextActionId": "action.choose_days_quantity@Стокгольм",
@@ -125,7 +125,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Кіпр!",
+      "text": "Города на Кипре!",
       "buttons": [
         {
           "nextActionId": "action.choose_days_quantity@Ларнака",
@@ -139,7 +139,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Німеччина!",
+      "text": "Города в Германии!",
       "buttons": [
         {
           "nextActionId": "action.choose_days_quantity@Бремен",
@@ -181,43 +181,43 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Виберіть місто",
+      "text": "Виберите страну!",
       "buttons": [
         {
           "nextActionId": "action.bolgaria@Болгария",
-          "buttonText": "Болгарія"
+          "buttonText": "Болгария"
         },
         {
-          "nextActionId": "action.austria@Австрія",
-          "buttonText": "Австрія"
+          "nextActionId": "action.austria@Австрия",
+          "buttonText": "Австрия"
         },
         {
           "nextActionId": "action.polscha",
-          "buttonText": "Польща"
+          "buttonText": "Польша"
         },
         {
-          "nextActionId": "action.germany@Німеччина",
-          "buttonText": "Німеччина"
+          "nextActionId": "action.germany@Германия",
+          "buttonText": "Германия"
         },
         {
-          "nextActionId": "action.estonia@Естонія",
-          "buttonText": "Естонія"
+          "nextActionId": "action.estonia@Естония",
+          "buttonText": "Естония"
         },
         {
-          "nextActionId": "action.latvia@Латвія",
-          "buttonText": "Латвія"
+          "nextActionId": "action.latvia@Латвия",
+          "buttonText": "Латвия"
         },
         {
-          "nextActionId": "action.litva@Літва",
-          "buttonText": "Літва"
+          "nextActionId": "action.litva@Литва",
+          "buttonText": "Литва"
         },
         {
-          "nextActionId": "action.england@Англія",
-          "buttonText": "Англія"
+          "nextActionId": "action.england@Англия",
+          "buttonText": "Англия"
         },
         {
-          "nextActionId": "action.vengria@Венгрія",
-          "buttonText": "Венгрія"
+          "nextActionId": "action.vengria@Венгрия",
+          "buttonText": "Венгрия"
         },
         {
           "nextActionId": "action.slovakia@Словакія",
@@ -231,7 +231,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Австрія!",
+      "text": "Города в Австрии!",
       "buttons": [
         {
           "nextActionId": "action.choose_days_quantity@Вена",
@@ -245,11 +245,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Болгарія!",
+      "text": "Города в Болгарии!",
       "buttons": [
         {
-          "nextActionId": "action.choose_days_quantity@Софія",
-          "buttonText": "Софія"
+          "nextActionId": "action.choose_days_quantity@София",
+          "buttonText": "София"
         }
       ]
     }
@@ -259,7 +259,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Польща!",
+      "text": "Города в Польше!",
       "buttons": [
         {
           "nextActionId": "action.choose_days_quantity@Краков",
@@ -293,11 +293,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Естонія!",
+      "text": "Города в Естонии!",
       "buttons": [
         {
-          "nextActionId": "action.choose_days_quantity@Талін",
-          "buttonText": "Талін"
+          "nextActionId": "action.choose_days_quantity@Талин",
+          "buttonText": "Талин"
         }
       ]
     }
@@ -307,11 +307,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Литва!",
+      "text": "Города в Литве!",
       "buttons": [
         {
-          "nextActionId": "action.choose_days_quantity@Вільнюс",
-          "buttonText": "Вільнюс"
+          "nextActionId": "action.choose_days_quantity@Вильнюс",
+          "buttonText": "Вильнюс"
         }
       ]
     }
@@ -321,11 +321,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Німеччина!",
+      "text": "Города в Германии!",
       "buttons": [
         {
-          "nextActionId": "action.choose_days_quantity@Берлін",
-          "buttonText": "Берлін"
+          "nextActionId": "action.choose_days_quantity@Берлин",
+          "buttonText": "Берлин"
         },
         {
           "nextActionId": "action.choose_days_quantity@Франкфурт",
@@ -339,7 +339,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Англія!",
+      "text": "Города в Англии!",
       "buttons": [
         {
           "nextActionId": "action.choose_days_quantity@Лондон",
@@ -353,11 +353,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Венгрія!",
+      "text": "Города в Венгрии!",
       "buttons": [
         {
-          "nextActionId": "action.choose_days_quantity@Венгрія",
-          "buttonText": "Венгрія"
+          "nextActionId": "action.choose_days_quantity@Будапешт",
+          "buttonText": "Будапешт"
         }
       ]
     }
@@ -367,11 +367,11 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Латвія!",
+      "text": "Города в Латвии!",
       "buttons": [
         {
-          "nextActionId": "action.choose_days_quantity@Ріга",
-          "buttonText": "Ріга"
+          "nextActionId": "action.choose_days_quantity@Рига",
+          "buttonText": "Рига"
         }
       ]
     }
@@ -381,7 +381,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Словакія!",
+      "text": "Корода в Словакии!",
       "buttons": [
         {
           "nextActionId": "action.choose_days_quantity@Братислава",
@@ -395,7 +395,7 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Дні!",
+      "text": "Длительность поездки?",
       "buttons": [
         {
           "nextActionId": "action.choose_month@1-2",
@@ -428,12 +428,12 @@
       "buttons": [
         {
           "nextActionId": "action.people_quantity@this",
-          "buttonText": "Цей місяць",
+          "buttonText": "Этот месяц",
           "params": {}
         },
         {
           "nextActionId": "action.people_quantity@next",
-          "buttonText": "Наступний місяць",
+          "buttonText": "Следуйщий месяц",
           "params": {}
         },
         {
@@ -442,7 +442,7 @@
           "params": {}
         }
       ],
-      "text": "Місяці!"
+      "text": "В каком месяце?"
     },
     "params": {
       "db_params": [
@@ -462,19 +462,19 @@
     "expectedIncomeType": "SUGGESTION",
     "outcomeMessage": {
       "type": "suggestion",
-      "text": "Місяці!",
+      "text": "Количество человек?",
       "buttons": [
         {
           "nextActionId": "actions.personal_info@Сам",
           "buttonText": "Сам"
         },
         {
-          "nextActionId": "actions.personal_info@В двох",
-          "buttonText": "В двох"
+          "nextActionId": "actions.personal_info@Вдвоем",
+          "buttonText": "Вдвоем"
         },
         {
-          "nextActionId": "actions.personal_info@Компанія",
-          "buttonText": "Компанія"
+          "nextActionId": "actions.personal_info@Компания",
+          "buttonText": "Компания"
         }
       ]
     },
@@ -494,7 +494,7 @@
     "nextActionId": "actions.last",
     "outcomeMessage": {
       "type": "text",
-      "text": "Ввведіть інформація як з вами зв'язатися!"
+      "text": "Введите информацию как с вами связатся!"
     },
     "db_params": [
       {
@@ -513,11 +513,11 @@
       "buttons": [
         {
           "nextActionId": "system.action.default",
-          "buttonText": "Пройти знову?",
+          "buttonText": "Еще заказ)?",
           "params": {}
         }
       ],
-      "text": "Дякую за увагу.",
+      "text": "Спасибо, за предоставленную информацию. В ближайшее время с Вами свяжется наш менеджер. Ожидайте звонка. Хорошего вам дня 🙂",
       "special_action": true
     },
     "params": {
