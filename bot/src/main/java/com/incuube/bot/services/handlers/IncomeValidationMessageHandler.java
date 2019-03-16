@@ -36,7 +36,7 @@ public class IncomeValidationMessageHandler implements IncomeMessageHandler {
             if (next.getExpectedIncomeType() != null && incomeMessage.getIncomeType() != next.getExpectedIncomeType()) {
 
                 actionProcessorFacade.sendRepeatErrorAction(
-                        String.format("I expected %s message. Try again", incomeMessage.getIncomeType().toValue()), user);
+                        String.format("Я ожидал %s сообщения. Попробуйте еще раз!", incomeMessage.getIncomeType().toValue()), user);
             }
             validators.forEach(validator -> validator.checkMessageAndAction(next, incomeMessage));
 

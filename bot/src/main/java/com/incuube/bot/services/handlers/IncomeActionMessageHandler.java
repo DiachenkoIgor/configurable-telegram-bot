@@ -57,7 +57,7 @@ public class IncomeActionMessageHandler implements IncomeMessageHandler {
             }
             if (!action.isPresent()) {
                 log.error("Action was not found in action handler for message - " + incomeMessage);
-                actionProcessorFacade.sendRepeatErrorAction("I can't recognize your message.Please try again", user);
+                actionProcessorFacade.sendRepeatErrorAction("Я не понял вашего сообщения. Пожалуйста, попробуйте еще раз!", user);
             } else {
                 nextMessageHandler.handleMessage(incomeMessage, user, action.get());
             }

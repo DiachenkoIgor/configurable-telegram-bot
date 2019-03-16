@@ -81,6 +81,7 @@ public class OutcomeMessageSender {
         sb.append("City - \"").append(telegramUser.getParams().get("city")).append("\"\n");
         sb.append("Days - \"").append(telegramUser.getParams().get("days")).append("\"\n");
         sb.append("Month - \"").append(telegramUser.getParams().get("month")).append("\"\n");
+        sb.append("Persons - \"").append(telegramUser.getParams().get("persons")).append("\"\n");
         sb.append("Time -\"").append(telegramUser.getLastActionTime().plusHours(2).format(formatter)).append("\"\n");
         sb.append("Connection message -\"").append((String) telegramUser.getParams().get("contact_info")).append("\"");
 

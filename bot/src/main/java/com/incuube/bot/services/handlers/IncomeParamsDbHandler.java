@@ -54,6 +54,8 @@ public class IncomeParamsDbHandler implements IncomeMessageHandler {
             actionProcessorFacade.sendRepeatErrorAction(ex.getUserMessage(), user);
         } catch (BotDabaseException ex) {
             actionProcessorFacade.sendFatalError(incomeMessage.getUserId(), incomeMessage.getMessenger());
+        }catch (Exception ex){
+            actionProcessorFacade.sendRepeatErrorAction("Что то пошло не так. Пожалуйста повторите действие!", user);
         }
     }
 
@@ -112,7 +114,17 @@ public class IncomeParamsDbHandler implements IncomeMessageHandler {
             if (paramName != null) {
                 Optional<String> paramFromMap = ParamsExtractor.getParamFromMap(incomeMessage.getParams(), paramName);
                 if (paramFromMap.isPresent()) {
-                    json = json.replace(String.format("${%s}", paramName), paramFromMap.get());
+                    String value=paramFromMap.get();
+                    if(value.equals("\\")){
+                        value="\\\\";
+                    }
+                    if(value.equals("\"")){
+                        value="\\\"";
+                    }
+                    if(value.contains("\n")){
+                        value=value.replace("\n","\\n");
+                    }
+                    json = json.replace(String.format("${%s}", paramName), value);
                     continue;
                 }
                 Optional<DbSaverEntity> dbSaverEntityOptional = JsonConverter.convertJson(json, DbSaverEntity.class);
